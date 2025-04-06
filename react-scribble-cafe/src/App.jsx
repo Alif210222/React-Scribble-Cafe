@@ -3,6 +3,7 @@ import { Suspense, useState } from 'react'
 import './App.css'
 import Blogs from './Components/Blogs/Blogs'
 import Nav from './Components/Navber/Nav'
+import { addItemToLocalStorage } from './Utilities/localStorage'
 
 
 function App() {
@@ -14,7 +15,11 @@ function App() {
   const handleBookMark = (blog)=>{
         const  newMark = [...mark , blog ]
         setMark(newMark)
+
+        // save to local storage
+        addItemToLocalStorage(blog.id)
   }
+  
   
   const handleMarkAsRead = (time , id)=>{
          const newTime = (readingTime + time)
